@@ -34,6 +34,9 @@ namespace EFCorePowerTools.ViewModels
                 if (value == _selectedSchema) return;
                 _selectedSchema = value;
                 OnPropertyChanged();
+                 ( (RelayCommand)OkCommand ).NotifyCanExecuteChanged( );
+                ( (RelayCommand)AddCommand ).NotifyCanExecuteChanged( );
+                ( (RelayCommand)RemoveCommand ).NotifyCanExecuteChanged( );
             }
         }
 
@@ -69,6 +72,9 @@ namespace EFCorePowerTools.ViewModels
         private void Add_Executed()
         {
             Schemas.Add(new SchemaInfo());
+            ( (RelayCommand)OkCommand ).NotifyCanExecuteChanged( );
+            ( (RelayCommand)AddCommand ).NotifyCanExecuteChanged( );
+            ( (RelayCommand)RemoveCommand ).NotifyCanExecuteChanged( );
         }
 
         private void Remove_Executed()

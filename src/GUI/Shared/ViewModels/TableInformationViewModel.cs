@@ -33,7 +33,7 @@
             StartEditCommand = new RelayCommand(StartEdit_Execute);
             ConfirmEditCommand = new RelayCommand(ConfirmEdit_Execute);
             CancelEditCommand = new RelayCommand(CancelEdit_Execute);
-            SetSelectedCommand = new RelayCommand<bool>(SetSelected_Execute);
+            SetSelectedCommand = new RelayCommand<object>(SetSelected_Execute);
             Columns.CollectionChanged += Columns_CollectionChanged;
         }
 
@@ -195,8 +195,9 @@
             }
         }
 
-        private void SetSelected_Execute(bool value)
+        private void SetSelected_Execute(object objValue ) 
         {
+			var value = ( ( objValue?.ToString( ).ToLowerInvariant( ) ?? "false" ) == "true" );			
             IsSelected = value;
         }
     }

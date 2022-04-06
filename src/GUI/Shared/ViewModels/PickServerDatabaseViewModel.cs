@@ -67,6 +67,8 @@
                 if (value == _filterSchemas) return;
                 _filterSchemas = value;
                 OnPropertyChanged();
+
+                ((RelayCommand)FilterSchemasCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -81,6 +83,9 @@
 
                 if (_selectedDatabaseConnection != null)
                     SelectedDatabaseDefinition = null;
+
+                ((RelayCommand)OkCommand).NotifyCanExecuteChanged();
+                ((RelayCommand)CancelCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -95,6 +100,9 @@
 
                 if (_selectedDatabaseDefinition != null)
                     SelectedDatabaseConnection = null;
+
+                ((RelayCommand)OkCommand).NotifyCanExecuteChanged();
+                ((RelayCommand)CancelCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -124,6 +132,9 @@
                 }
 
                 _uiHint = value;
+
+                ((RelayCommand)OkCommand).NotifyCanExecuteChanged();
+                ((RelayCommand)CancelCommand).NotifyCanExecuteChanged();
             }
         }
 

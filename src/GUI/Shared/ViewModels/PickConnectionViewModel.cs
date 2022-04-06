@@ -31,6 +31,7 @@
                 if (Equals(value, _connectionString)) return;
                 _connectionString = value;
                 OnPropertyChanged();
+                ( (RelayCommand)OkCommand ).NotifyCanExecuteChanged( );
             }
         }
 

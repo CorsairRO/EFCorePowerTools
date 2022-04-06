@@ -408,7 +408,7 @@ namespace EFCorePowerTools
                     .AddTransient<ICompareResultViewModel, CompareResultViewModel>();
 
             // Register BLL
-            var messenger = new WeakReferenceMessenger();
+            var messenger = WeakReferenceMessenger.Default;
             messenger.Register<ShowMessageBoxMessage>(this, HandleShowMessageBoxMessage);
 
             services.AddSingleton<IExtensionVersionService, ExtensionVersionService>()

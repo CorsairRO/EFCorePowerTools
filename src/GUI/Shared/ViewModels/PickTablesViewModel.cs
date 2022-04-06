@@ -112,6 +112,7 @@
         private void UpdateTableSelectionThreeState()
         {
             TableSelectionThreeState = ObjectTree.GetSelectionState(); 
+            ( (RelayCommand)OkCommand ).NotifyCanExecuteChanged( );
         }
 
         public void AddObjects(IEnumerable<TableModel> objects, IEnumerable<Schema> customReplacers)

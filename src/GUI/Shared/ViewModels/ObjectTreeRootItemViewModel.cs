@@ -15,7 +15,7 @@
     {
         public ObjectTreeRootItemViewModel()
         {
-            SetSelectedCommand = new RelayCommand<bool>(SetSelected_Execute);
+            SetSelectedCommand = new RelayCommand<object>(SetSelected_Execute);
             Schemas.CollectionChanged += (s, e) =>
             {
                 foreach (ISchemaInformationViewModel item in e.NewItems)
@@ -110,8 +110,8 @@
 
         }
 
-        private void SetSelected_Execute(bool value)
-        {
+        private void SetSelected_Execute(object objValue ) {
+			var value = ( ( objValue?.ToString( ).ToLowerInvariant( ) ?? "false" ) == "true" );
             IsSelected = value;
         }
     }
